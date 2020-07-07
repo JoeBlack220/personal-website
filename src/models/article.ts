@@ -1,12 +1,16 @@
 import mongoose, { Document } from 'mongoose';
 import marked from 'marked';
 import slugify from 'slugify';
+import createDomPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
+const dompurify = createDomPurify(new JSDOM().window as unknown as Window);
 export interface article extends Document {
     title: string,
     description: string,
     markdown: string,
     createdAt: Date,
-    slug: string
+    slug: string,
+    sanitizedHtml: string
 }
 const articleSchema: mongoose.Schema = new mongoose.Schema({
     title: {
@@ -28,12 +32,19 @@ const articleSchema: mongoose.Schema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    sanitizedHtml: {
+        type: String,
+        required: true
     }
 });
 
 articleSchema.pre<article>('validate', function (next) {
     if (this.title) {
         this.slug = slugify(this.title, { lower: true, strict: true })
+    }
+    if (this.markdown) {
+        this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
     }
     next();
 });
