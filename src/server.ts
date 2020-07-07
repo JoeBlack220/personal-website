@@ -2,6 +2,7 @@ import express from "express";
 import { articleRouter } from './routes/articles';
 import mongoose from 'mongoose';
 import { Article } from './models/article';
+import methodOverride from 'method-override';
 const app = express();
 const port = 8080; // default port to listen
 mongoose.connect('mongodb://localhost/blog', {
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost/blog', {
 app.set("view engine", "ejs");
 // what does this do?
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 app.use("/articles", articleRouter);
 
 // define a route handler for the default home page

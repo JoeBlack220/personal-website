@@ -24,17 +24,18 @@ const articleSchema: mongoose.Schema = new mongoose.Schema({
         type: Date,
         default: () => new Date()
     },
-    // slug: {
-    //     type: String,
-    //     required: true,
-    //     unique: true
-    // }
+    slug: {
+        type: String,
+        required: true,
+        unique: true
+    }
 });
 
-// articleSchema.pre<article>('validate', function (next) {
-//     if (this.title) {
-//         this.slug = slugify(this.title, { lower: true, strict: true })
-//     }
-// });
+articleSchema.pre<article>('validate', function (next) {
+    if (this.title) {
+        this.slug = slugify(this.title, { lower: true, strict: true })
+    }
+    next();
+});
 
-export const Article = mongoose.model('Article', articleSchema);
+export const Article = mongoose.model<article>('Article', articleSchema);
