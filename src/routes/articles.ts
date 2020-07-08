@@ -1,9 +1,9 @@
 import express, { Request, Response, Router } from 'express';
 import { Article, article } from './../models/article';
 const articleRouter = express.Router();
-articleRouter.get('/new', (req: Request, res: Response) => {
-    res.render('articles/new', { article: new Article() });
-});
+// articleRouter.get('/new', (req: Request, res: Response) => {
+//     res.render('articles/new', { article: new Article() });
+// });
 articleRouter.get('/edit/:id', async (req: Request, res: Response) => {
     const article = await Article.findById(req.params.id);
     res.render('articles/edit', { article: article });
