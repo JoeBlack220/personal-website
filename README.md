@@ -11,15 +11,20 @@
 - npm start
 - go to localhost:8080
 ## TODOs
-- convert code to oop styles
-- add styles to the webpage using semantic UI and bootstrap
-- add resuability
-- user management
-- environment configurable
+- Add styles to the webpage using semantic UI and bootstrap
+- User management
+- Environment configurable
 - Picutre uploading
-- convert template engine to React
+- Convert template engine to React
+- Need to fix Chinese title issue
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
+- 07/08/2020: Modified all the code to decorator style
+## Archived Todos
+- Convert code to oop styles
+- Add resuablity
+- Add decorator style
+
 
 
 

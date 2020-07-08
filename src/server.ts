@@ -1,32 +1,23 @@
 import express from "express";
-import { articleRouter } from './routes/articles';
 import mongoose from 'mongoose';
-import { Article } from './models/article';
 import methodOverride from 'method-override';
-import './controllers/TestController';
-import { router } from './controllers/decorators/controller';
+import { AppRouter } from './AppRouter';
+import './controllers/ArticlesController';
+import './controllers/RootController'
 const app = express();
 const port = 8080; // default port to listen
 mongoose.connect('mongodb://localhost/blog', {
-    useNewUrlParser: true, useUnifiedTopology: true
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 });
 
+const router = AppRouter.getInstance();
 // Configure Express to use EJS
 app.set("view engine", "ejs");
 // what does this do?
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(router);
-app.use("/articles", articleRouter);
-
-// define a route handler for the default home page
-app.get("/", async (req, res) => {
-    const articles = await Article.find().sort({
-        createdAt: 'desc'
-    });
-    // render the index template
-    res.render("articles/index", { articles: articles });
-});
+// app.use("/articles", articleRouter);
 
 // start the express server
 app.listen(port, () => {
