@@ -11,6 +11,7 @@
 - npm start
 - go to localhost:8080
 ## TODOs
+- Detach the frontend from the backend
 - Add styles to the webpage using semantic UI and bootstrap
 - User management
 - Environment configurable
@@ -20,6 +21,7 @@
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
 - 07/08/2020: Modified all the code to decorator style
+- 07/09/2020: Added some safety-related dependencies to the server
 ## Archived Todos
 - Convert code to oop styles
 - Add resuablity
