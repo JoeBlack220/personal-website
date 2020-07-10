@@ -7,9 +7,11 @@ import './controllers/RootController';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-const port = 8080; // default port to listen
-mongoose.connect('mongodb://localhost/blog', {
+const port = process.env.PORT; // default port to listen
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/blog', {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 });
 app.use(morgan('common'));
@@ -19,8 +21,9 @@ app.set("view engine", "ejs");
 // what does this do?
 app.use(express.urlencoded({ extended: false }));
 // usage: deny other origin to use get function here
-app.use(cors({ origin: 'http://localhost:3000' }));
-
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
+// json parsing middle ware, uncomment this when the server is used only for json
+// app.use(express.json());
 // Hide the metadata of which server we are using in the browser
 app.use(helmet());
 app.use(methodOverride('_method'));
@@ -38,7 +41,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(statusCode);
     res.json({
         message: error.message,
-        stack: process.env.NODE_ENV == 'production' ? `🍰` : error.stack;
+        stack: process.env.NODE_ENV == 'production' ? `🍰` : error.stack
     });
 });
 // start the express server
