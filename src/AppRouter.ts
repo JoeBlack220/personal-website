@@ -1,5 +1,6 @@
 import express from 'express';
 
+// Singleton of the server's router
 export class AppRouter {
     private static instance: express.Router;
     static getInstance(): express.Router {

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Article, fake } from '../interfaces/Article';
+import { Article } from '../interfaces/Article';
 
 interface CardProps {
     article: Article;
