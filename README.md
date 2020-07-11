@@ -17,6 +17,8 @@
 - Picutre uploading
 - Convert template engine to React
 - Need to fix Chinese title issue
+- Multiple kinds of layout of blogs
+- Layout adjustable for mobile devices
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
 - 07/08/2020: Modified all the code to decorator style

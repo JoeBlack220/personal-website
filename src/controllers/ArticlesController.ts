@@ -32,6 +32,7 @@ class TestController {
     @after(saveArticleAndRedirect("new"))
     @post('/')
     async postNewArticle(req: RequestWithArticle, res: Response, next: NextFunction) {
+        // placeholder
         req.article = new Article();
         next();
     }
