@@ -11,7 +11,7 @@
 - npm start
 - go to localhost:8080
 ## TODOs
-- Detach the frontend from the backend
+- Turn backend to a pure json server
 - Add styles to the webpage using semantic UI and bootstrap
 - User management
 - Picutre uploading
@@ -19,6 +19,7 @@
 - Need to fix Chinese title issue
 - Multiple kinds of layout of blogs
 - Layout adjustable for mobile devices
+- Use react class based components first then migrate to react hooks style
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
 - 07/08/2020: Modified all the code to decorator style
