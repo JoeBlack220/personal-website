@@ -1,10 +1,11 @@
 import { Document } from 'mongoose';
 
-export interface Article extends Document {
+export interface Article {
     title: string,
     description: string,
     markdown: string,
-    createdAt: Date,
+    createdAt: string,
     slug: string,
     sanitizedHtml: string,
+    _id: string
 }

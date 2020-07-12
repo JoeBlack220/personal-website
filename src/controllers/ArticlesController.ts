@@ -15,8 +15,8 @@ class TestController {
     // default value of each field.
     @get('/edit/:id')
     async getEdit(req: Request, res: Response) {
-        let article = await Article.findById(req.params.id);
-        res.render('articles/edit', { article: article });
+        const article = await Article.findById(req.params.id);
+        res.send(article);
     }
 
     @get('/:slug')

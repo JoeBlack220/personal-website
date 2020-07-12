@@ -3,6 +3,7 @@ import marked from 'marked';
 import slugify from 'slugify';
 import createDomPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
+import pinyin from 'pinyin';
 const dompurify = createDomPurify(new JSDOM().window as unknown as Window);
 export interface article extends Document {
     title: string,
@@ -40,8 +41,12 @@ const articleSchema: mongoose.Schema = new mongoose.Schema({
 });
 
 articleSchema.pre<article>('validate', function (next) {
+    // Handling Chinese title issue
     if (this.title) {
-        this.slug = slugify(this.title, { lower: true, strict: true })
+        let tempTitle = pinyin(this.title, {
+            style: pinyin.STYLE_NORMAL
+        }).join("-");
+        this.slug = slugify(tempTitle, { lower: true, strict: true })
     }
     if (this.markdown) {
         this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
