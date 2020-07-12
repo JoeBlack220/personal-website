@@ -8,24 +8,29 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+// Read global configuration
 dotenv.config();
 const app = express();
 const port = process.env.PORT; // default port to listen
+
+// Connect to MongoDB
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/blog', {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 });
+// Todo: Find out what these line do
 app.use(morgan('common'));
+app.use(helmet());
 const router = AppRouter.getInstance();
 // Configure Express to use EJS
 app.set("view engine", "ejs");
-// what does this do?
+
+// add parser
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // usage: deny other origin to use get function here
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
-// json parsing middle ware, uncomment this when the server is used only for json
-// app.use(express.json());
 // Hide the metadata of which server we are using in the browser
-app.use(helmet());
 app.use(methodOverride('_method'));
 
 app.use(router);

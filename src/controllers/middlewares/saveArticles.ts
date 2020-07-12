@@ -7,11 +7,17 @@ export function saveArticleAndRedirect(path: string) {
             article.title = req.body.title;
             article.description = req.body.description;
             article.markdown = req.body.markdown;
+            // console.log(article.title);
+            // console.log(req.body.description);
+            // console.log(req.body.markdown);
+
             try {
                 await article.save();
-                res.redirect(`/articles/${article.slug}`)
+                res.send({});
             } catch (e) {
-                res.render(`articles/${path}`, { article: article });
+                console.log("Can't save this article");
+                res.status(401);
+                res.send("None shall pass");
             }
         }
     }

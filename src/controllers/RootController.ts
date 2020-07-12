@@ -10,6 +10,6 @@ class RootController {
             createdAt: 'desc'
         });
         // render the index template
-        res.render("articles/index", { articles: articles });
+        res.send(articles);
     }
 }
