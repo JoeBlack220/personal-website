@@ -1,23 +1,17 @@
-import React, { FormEvent } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { Article } from '../interfaces/Article';
-import { Redirect } from "react-router-dom";
 
-import axios from 'axios';
 interface BlogFormProps {
     article?: Article,
-    isEdit?: boolean,
 }
 interface BlogFormState {
     article: Article,
-    hasError: boolean,
-    redirect?: string
 }
 export class BlogForm extends React.Component<BlogFormProps, BlogFormState> {
     constructor(props: BlogFormProps) {
         super(props);
         if (this.props.article) {
-            this.state = { article: this.props.article, hasError: false };
+            this.state = { article: this.props.article };
         }
         else {
             let article = {
@@ -30,42 +24,14 @@ export class BlogForm extends React.Component<BlogFormProps, BlogFormState> {
                 _id: ""
             }
 
-            this.state = { article: article, hasError: false };
+            this.state = { article: article };
         }
     }
-    onFormSubmit = async (event: FormEvent) => {
-        event.preventDefault();
-        // TODO: Fix this adhoc error handling
-        if (this.props.isEdit) {
-            // TODO: Fix this adhoc error handling
-            try {
-                const { status } = await axios.put(`http://localhost:8080/articles/${this.state.article._id}`, this.state.article);
-                this.setState({ redirect: "/" });
-            } catch (e) {
-                this.setState({ hasError: true });
-            }
-        }
-        else {
-            // TODO: Fix this adhoc error handling
-            try {
-                const { status } = await axios.post(`http://localhost:8080/articles/`, this.state.article);
-                this.setState({ redirect: "/" });
 
-            } catch (e) {
-                this.setState({ hasError: true });
-            }
-        }
-    }
     render() {
-        if (this.state.hasError) {
-            return <h1>Can't do that</h1>;
-        }
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
-        }
         if (this.state.article) {
             return (
-                <form onSubmit={this.onFormSubmit}>
+                <React.Fragment>
                     <div className="form-group">
                         <label htmlFor="title">Title</label>
                         <input
@@ -98,7 +64,7 @@ export class BlogForm extends React.Component<BlogFormProps, BlogFormState> {
                     </div>
                     <a href="/" className="btn btn-secondary">Cancel</a>
                     <button type="submit" className="btn btn-primary">Save</button>
-                </form>
+                </React.Fragment>
             );
         }
         return <h1>Error!</h1>;
