@@ -8,8 +8,9 @@
 - create, edit and delete markdown based text blog
 ## How to run?
 - start mongodb
-- npm start
-- go to localhost:8080
+- npm start -> start backend
+- cd ./client
+- npm start -> start frontend
 ## TODOs
 - Add styles to the webpage using semantic UI and bootstrap
 - User management

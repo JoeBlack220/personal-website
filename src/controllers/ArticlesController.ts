@@ -1,5 +1,5 @@
-import express, { Request, Response, Router, NextFunction } from 'express';
-import { Article, article } from './../models/article';
+import { Request, Response, NextFunction } from 'express';
+import { Article } from './../models/article';
 import { get, controller, del, post, use, after, put } from './decorators';
 import { RequestWithArticle } from './utils';
 import { saveArticleAndRedirect } from './middlewares';

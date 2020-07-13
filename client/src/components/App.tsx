@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Article } from '../interfaces/Article';
-import axios from 'axios';
+
 import { BlogNew } from './BlogNew';
 import { BlogEdit } from './BlogEdit';
 import { BlogDetails } from './BlogDetails';

@@ -1,5 +1,3 @@
-import { Document } from 'mongoose';
-
 export interface Article {
     title: string,
     description: string,
