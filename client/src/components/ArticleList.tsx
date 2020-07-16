@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Article } from '../interfaces/Article';
 import { ArticleCard } from './ArticleCard';
 interface ArticleListProps {

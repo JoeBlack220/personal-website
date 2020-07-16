@@ -4,6 +4,8 @@ import { BlogNew } from './BlogNew';
 import { BlogEdit } from './BlogEdit';
 import { BlogDetails } from './BlogDetails';
 import { Home } from './Home';
+import SongList from './SongList';
+import { LoginButton } from './Login/LoginButton';
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,17 +17,25 @@ import {
 export class App extends React.Component {
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route path="/articles">
-                        <Articles />
-                    </Route>
-                    <Route path="/">
-                        <Home />
-                    </Route>
-                </Switch>
+            <div>
+                <LoginButton></LoginButton>
+                <Router>
+                    <Switch>
+                        <Route path="/articles">
+                            <Articles />
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
+                    </Switch>
 
-            </Router>
+                </Router>
+
+            </div>
+
+            // <div>
+            //     <SongList></SongList>
+            // </div>
         );
     }
 }
