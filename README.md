@@ -3,7 +3,8 @@
 - Language: Typescript
 - Server: Express
 - Database: MongoDB
-- Frontend: React
+- Frontend: React + React Hook + Redux
+- OAuth: Passport.js + express
 ## Current Functionality
 - create, edit and delete markdown based text blog
 ## How to run?
@@ -22,6 +23,7 @@
 - understand dumpurify
 - Add tests for backend server
 - Error handlings on the front end side.
+- Add JWT to passport to handle OAuth better
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
 - 07/08/2020: Modified all the code to decorator style
@@ -29,6 +31,8 @@
 - 07/10/2020: Adjust to environmentally configurable
 - 07/11/2020: Convert backend server to a pure json server
 - 07/12/2020: Changed routing to react route. Fixed Chinese title issues. Handled all requests in react. Now the markdown blog works exactly the same as EJS version. Deleted all EJS templates.
+- 07/15/2020: Add example code for redux. Add buttons and dependencies for OAuth system.
+- 07/17/2020: Add local login in and log out service on the backend side.
 # new blog model
 - Title - Text Required
 - Description - Text
@@ -48,6 +52,7 @@
 - Chinese title issue(related to slugify)
 - Convert template engine to React
 - Handling routing in react
+- add scalffolding for redux
 
 
 

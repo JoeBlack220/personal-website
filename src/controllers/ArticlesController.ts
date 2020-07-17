@@ -4,12 +4,7 @@ import { get, controller, del, post, use, after, put } from './decorators';
 import { RequestWithArticle } from './utils';
 import { saveArticleAndRedirect } from './middlewares';
 @controller('/articles')
-class TestController {
-    // // Pure frontend work, can just be commented out
-    // @get('/new')
-    // getNew(req: Request, res: Response) {
-    //     res.render('articles/new', { article: new Article() });
-    // }
+class ArticleController {
 
     // Should first retrieve corresponding article as 
     // default value of each field.

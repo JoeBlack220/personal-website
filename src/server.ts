@@ -4,10 +4,13 @@ import methodOverride from 'method-override';
 import { AppRouter } from './AppRouter';
 import './controllers/ArticlesController';
 import './controllers/RootController';
+import './controllers/AuthControllers';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import passport from './passport';
+import cookieSession from 'cookie-session';
 // Read global configuration
 dotenv.config();
 const app = express();
@@ -27,13 +30,22 @@ app.set("view engine", "ejs");
 // add parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+// set up cookie session
+app.use(cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2']
+}))
 // usage: deny other origin to use get function here
 app.use(cors({ origin: process.env.CORS_ORIGIN }));
 // Hide the metadata of which server we are using in the browser
 app.use(methodOverride('_method'));
 
+// Using passport to do Oauth
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(router);
+
 // when user types a url that not exist
 app.use((req: Request, res: Response, next: NextFunction) => {
     const error = new Error(`Not Found - ${req.originalUrl}`);
