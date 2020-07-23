@@ -6,6 +6,7 @@ import { BlogDetails } from './BlogDetails';
 import { Home } from './Home';
 import SongList from './SongList';
 import { LoginButton } from './Login/LoginButton';
+import { LoginForm } from './Login/LoginForm';
 import {
     BrowserRouter as Router,
     Switch,
@@ -23,6 +24,9 @@ export class App extends React.Component {
                     <Switch>
                         <Route path="/articles">
                             <Articles />
+                        </Route>
+                        <Route path="/login">
+                            <LoginForm />
                         </Route>
                         <Route path="/">
                             <Home />
