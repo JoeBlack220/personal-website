@@ -7,6 +7,7 @@
 - OAuth: Passport.js + express
 ## Current Functionality
 - create, edit and delete markdown based text blog
+- signup, signin using JWT
 ## How to run?
 - start mongodb
 - npm start -> start backend
@@ -23,7 +24,7 @@
 - understand dumpurify
 - Add tests for backend server
 - Error handlings on the front end side.
-- Add JWT to passport to handle OAuth better
+- Add Refresh token in JWT
 # developer's log
 - 07/07/2020: Created basic blog functionalities. Create, edit and delete markdown based text blog
 - 07/08/2020: Modified all the code to decorator style
@@ -33,6 +34,7 @@
 - 07/12/2020: Changed routing to react route. Fixed Chinese title issues. Handled all requests in react. Now the markdown blog works exactly the same as EJS version. Deleted all EJS templates.
 - 07/15/2020: Add example code for redux. Add buttons and dependencies for OAuth system.
 - 07/17/2020: Add local login in and log out service on the backend side.
+- 07/22/2020: Add JWT for authorizing instead of session.
 # new blog model
 - Title - Text Required
 - Description - Text
@@ -53,6 +55,7 @@
 - Convert template engine to React
 - Handling routing in react
 - add scalffolding for redux
+- Add JWT to passport to handle OAuth better
 
 
 
